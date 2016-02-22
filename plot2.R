@@ -1,0 +1,7 @@
+x <- read.csv2("household_power_consumption.txt", header = TRUE)
+x_use <- rbind(x[x$Date == "1/2/2007", ], x[x$Date == "2/2/2007", ])
+x11()
+plot(as.numeric(x_use$Global_active_power), type = "l", xlab = "", ylab = "Global Active Power (kilowatts)", xaxt = "n")
+axis(side = 1, at = c(0, 1440, 2880), labels = c("Thu", "Fri", "Sat"))
+dev.copy(png, "plot2.png", width = 480, height = 480)
+dev.off()
